@@ -17,6 +17,19 @@ gem 'jbuilder', '~> 2.5'
 
 gem "paperclip", "~> 6.0.0"
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :doc do
+  gem 'sdoc', require: false
+end
+
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
