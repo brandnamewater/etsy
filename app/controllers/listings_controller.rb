@@ -23,6 +23,10 @@ class ListingsController < ApplicationController
   def edit
   end
 
+  def seller
+    @listings = Listing.where(user: current_user)
+  end
+
   # POST /listings
   # POST /listings.json
   def create
