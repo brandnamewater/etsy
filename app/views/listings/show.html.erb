@@ -9,8 +9,14 @@
     <p><%= @listing.description %></p>
     <p><%= @listing.response_time %></p>
     <p><%= number_to_currency(@listing.price) %></p>
+    <br />
+    <div class="center">
+        <%= link_to "Order Now", new_listing_order_path(@listing), class: "btn btn-danger" %>
+    </div>
   </div>
 </div>
+
+<%= render 'orders/form_shout' %>
 
 <% if current_user == @listing.user %>
 <%= link_to 'Edit', edit_listing_path(@listing) %>

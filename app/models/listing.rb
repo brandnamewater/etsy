@@ -7,4 +7,11 @@ class Listing < ApplicationRecord
   validates_attachment_presence :image
 
   belongs_to :user
+  has_many :orders
+
+  def self.search(search)
+    where("name LIKE ?","%#{search}%") 
+  end
+
+  DESCRIPTION =  %w{ YouTube Instgram Twitter Gamers Actors Athletes Skateboarders Musicians Artists Models Rappers Vloggers }
 end

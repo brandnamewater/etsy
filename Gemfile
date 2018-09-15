@@ -19,6 +19,7 @@ gem "paperclip", "~> 6.0.0"
 
 gem 'devise'
 
+gem 'stripe'
 
 group :production do
   gem 'pg'

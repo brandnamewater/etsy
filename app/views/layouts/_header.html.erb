@@ -9,23 +9,40 @@
         <a class="nav-link" href="/listings">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <%= link_to "Listings", listings_path %>
+        <%= link_to "Shop Items", listings_path %>
       </li>
     </ul>
-
-    <ul class"nav navbar-nav navbar-right">
-      <li class="nav-item">
-        <%= link_to "Sign Up", new_user_registration_path %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Sign In", new_user_session_path %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Seller", seller_path %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-      </li>
+    
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+          <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Seller Account
+        </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><%=link_to "Sales History", sales_path %></li>
+            <li class="nav-item"><%= link_to "Seller", seller_path %></li>
+          </ul>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.name %><span class="caret"></span>
+        </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <li class="nav-item"><%=link_to "Purchase History", purchases_path %></li>
+        <li class="nav-item"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <li class="nav-item"><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <ul>
+          </li>
+          <% else %>
+          <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li class="nav-item"><%= link_to "Sign In", new_user_session_path %></li>
+          <% end %>
+          </li>
+        </div>
+      </div>
     </ul>
   </div>
 </nav>

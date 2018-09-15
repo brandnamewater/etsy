@@ -1,19 +1,51 @@
+<div class="jumbotron">
+  <h1>Get Your Shout!</h1>
+  <h2> Discover Talent </h2>
+</div>
+
+<!-- <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Talent" %>
+    <%= submit_tag "Search", :name => nil %>
+    <% if @listings.blank? %>
+      <h4>There are no recipes containing the term "<%= params[:search] %>".</h4>
+    <% end %>
+<% end %> -->
+
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- The form -->
+<form class="example">
+  <%= form_tag(listings_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Talent" %>
+ <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+<% end %>
+
+
+
 <div class="center">
 <p id="notice"><%= notice %></p>
+</div>
 
-<h1>Listings</h1>
+<div class="center">
+<h1>Talent</h1></br>
+</div>
 
 <div class="row">
   <% @listings.each do |listing| %>
   <div class="col-md-3">
-    <div class="thumbnail">
-      <%= image_tag listing.image.url(:medium) %>
-    </div>
+    <div class="drop-shadow">
+      <div class="thumbnail">
+        <%= link_to listing do %>
+        <%= image_tag listing.image.url(:medium) %>
+        <%end %>
+
+      </div>
     <div class="caption">
       <h2><%= listing.name %><h2>
-      <p><%= number_to_currency(listing.price) %></p>
       <p><%= listing.user.name %></p>
-      <td><%= link_to 'Show', listing, class: "btn btn-link" %></td
+    </div>
     </div>
   </div>
   <% end %>
@@ -21,7 +53,4 @@
 
 <br>
 
-<% if (user_signed_in?) %>
-<%= link_to 'New Listing', new_listing_path, class: "btn btn-link" %>
-<% end %>
 </div>

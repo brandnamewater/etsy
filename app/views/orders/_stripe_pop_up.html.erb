@@ -1,0 +1,12 @@
+<form action="your-server-side-code" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_V7XvVb3VQUkApf3ZhwFL1LHd"
+    data-amount= <%= @listing.price * 100 %>
+    data-name="SHOUTStv"
+    data-description="Example charge"
+    data-zip-code="true"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto">
+  </script>
+</form>
